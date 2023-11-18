@@ -1,6 +1,0 @@
-User-agent: *
-Allow: /
-
-Sitemap: https://cyber.ljnkediri.id/sitemap-index.xml
-Sitemap: https://cyber.ljnkediri.id/sitemap-index-1.xml
-Sitemap: https://cyber.ljnkediri.id/sitemap.xml
